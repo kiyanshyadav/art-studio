@@ -79,23 +79,24 @@ function loadQuestion() {
         const optionElement = document.createElement("div");
         optionElement.classList.add("option");
         optionElement.textContent = option;
-        optionElement.onclick = () => checkAnswer(optionElement, index);
+        optionElement.setAttribute("data-index", index);
+        optionElement.onclick = () => checkAnswer(optionElement, index, questionData.correctIndex);
         optionsContainer.appendChild(optionElement);
     });
 
     document.querySelector(".next-btn").style.display = "none"; // Hide "Next" button initially
 }
 
-function checkAnswer(element, selectedIndex) {
-    const questionData = questions[currentQuestionIndex];
-
+function checkAnswer(selectedElement, selectedIndex, correctIndex) {
     // Disable all options after selection
-    document.querySelectorAll(".option").forEach((opt, index) => {
-        opt.onclick = null; // Prevent further clicks
-        if (index === questionData.correctIndex) {
-            opt.classList.add("correct"); // Highlight correct answer
-        } else if (index === selectedIndex) {
-            opt.classList.add("incorrect"); // Highlight wrong choice
+    document.querySelectorAll(".option").forEach((option, index) => {
+        option.onclick = null; // Prevent further clicks
+
+        if (index === correctIndex) {
+            option.classList.add("correct"); // Highlight correct answer in green
+        } 
+        if (index === selectedIndex && selectedIndex !== correctIndex) {
+            option.classList.add("incorrect"); // Highlight incorrect choice in red
         }
     });
 
@@ -112,7 +113,6 @@ function nextQuestion() {
 }
 
 // Load the first question when the page loads
-
         window.onload = loadQuestion;
     </script>
 
