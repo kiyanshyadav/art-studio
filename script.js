@@ -113,7 +113,7 @@ const questions = [
 
 // Function to render all questions dynamically
 function loadQuestions() {
-    const container = document.getElementById("questions-container");
+    const container = document.getElementById("mcq-section");
     questions.forEach((q, index) => {
         const questionDiv = document.createElement("div");
         questionDiv.classList.add("question");
