@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .question-container {
+            margin: 20px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            max-width: 500px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+        .correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+        }
+        .icon {
+            margin-left: auto;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="question-container">
+    <h3>Which of the following is a characteristic feature of the Rajasthani School of Miniature Painting?</h3>
+    <div class="option" onclick="checkAnswer(this, true)"> 
+        A. Use of bold and vibrant colors <span class="icon"></span>
+    </div>
+    <div class="option" onclick="checkAnswer(this, false)"> 
+        B. Exclusive use of monochrome shades <span class="icon"></span>
+    </div>
+    <div class="option" onclick="checkAnswer(this, false)"> 
+        C. Lack of human figures <span class="icon"></span>
+    </div>
+    <div class="option" onclick="checkAnswer(this, false)"> 
+        D. No influence from Mughal art <span class="icon"></span>
+    </div>
+</div>
+
+<script>
+    function checkAnswer(element, isCorrect) {
+        // Reset all options
+        let options = document.querySelectorAll(".option");
+        options.forEach(opt => {
+            opt.classList.remove("correct", "incorrect");
+            opt.querySelector(".icon").innerHTML = "";
+        });
+
+        // Apply styles and icon
+        if (isCorrect) {
+            element.classList.add("correct");
+            element.querySelector(".icon").innerHTML = "✔";
+        } else {
+            element.classList.add("incorrect");
+            element.querySelector(".icon").innerHTML = "✖";
+        }
+    }
+</script>
+
+</body>
+</html>
