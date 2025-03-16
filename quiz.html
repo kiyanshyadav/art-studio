@@ -79,7 +79,6 @@ function loadQuestion() {
         const optionElement = document.createElement("div");
         optionElement.classList.add("option");
         optionElement.textContent = option;
-        optionElement.setAttribute("data-index", index);
         optionElement.onclick = () => checkAnswer(optionElement, index, questionData.correctIndex);
         optionsContainer.appendChild(optionElement);
     });
@@ -88,17 +87,17 @@ function loadQuestion() {
 }
 
 function checkAnswer(selectedElement, selectedIndex, correctIndex) {
-    // Disable all options after selection
-    document.querySelectorAll(".option").forEach((option, index) => {
-        option.onclick = null; // Prevent further clicks
-
-        if (index === correctIndex) {
-            option.classList.add("correct"); // Highlight correct answer in green
-        } 
-        if (index === selectedIndex && selectedIndex !== correctIndex) {
-            option.classList.add("incorrect"); // Highlight incorrect choice in red
-        }
+    // Reset previous styles before applying new ones
+    document.querySelectorAll(".option").forEach((option) => {
+        option.classList.remove("correct", "incorrect");
     });
+
+    if (selectedIndex === correctIndex) {
+        selectedElement.classList.add("correct"); // Correct answer turns green
+    } else {
+        selectedElement.classList.add("incorrect"); // Wrong answer turns red
+        document.querySelectorAll(".option")[correctIndex].classList.add("correct"); // Highlight correct answer
+    }
 
     document.querySelector(".next-btn").style.display = "block"; // Show "Next" button
 }
@@ -113,7 +112,7 @@ function nextQuestion() {
 }
 
 // Load the first question when the page loads
-        window.onload = loadQuestion;
+window.onload = loadQuestion;        
     </script>
 
 </body>
