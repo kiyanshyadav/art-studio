@@ -69,21 +69,6 @@
 let currentQuestionIndex = 0;
 let answered = false; // Track if the user has answered
 
-// Sample questions array (replace with your actual questions)
-const questions = [
-    {
-        question: "What is 2 + 2?",
-        options: ["3", "4", "5", "6"],
-        correctIndex: 1,
-    },
-    {
-        question: "What is the capital of France?",
-        options: ["Berlin", "Madrid", "Paris", "Rome"],
-        correctIndex: 2,
-    },
-    // Add more questions here
-];
-
 function loadQuestion() {
     answered = false; // Reset answer tracking
     const questionData = questions[currentQuestionIndex];
@@ -115,7 +100,6 @@ function checkAnswer(selectedElement, selectedIndex, correctIndex) {
         if (index === selectedIndex && selectedIndex !== correctIndex) {
             option.classList.add("incorrect"); // Highlight wrong choice in red
         }
-        option.onclick = null; // Disable further clicks on options
     });
 
     document.querySelector(".next-btn").style.display = "block"; // Show Next button
