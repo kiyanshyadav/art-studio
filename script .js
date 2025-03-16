@@ -1,5 +1,3 @@
-// Placeholder for MCQs (Will be updated later)
-console.log("MCQ Section will be dynamically updated soon.");
 // Array of MCQs with correct answers
 const questions = [
     { question: "Who coined the term Rajput Paintings?", options: ["E. B. Havell", "Anand Coomaraswamy", "Stella Kramrisch", "Percy Brown"], correct: 1 },
