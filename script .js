@@ -26,60 +26,14 @@ const questions = [
     { question: "Raga Megha in Ragamala paintings is associated with:", options: ["Summer and the color red", "Monsoon and cloudy skies", "Spring and blooming flowers", "Autumn and golden leaves"], correct: 1 },
 ];
 
-// Function to render all questions dynamically
-function loadQuestions() {
-    const container = document.getElementById("questions-container");
-    questions.forEach((q, index) => {
-        const questionDiv = document.createElement("div");
-        questionDiv.classList.add("question");
 
-        const questionText = document.createElement("h4");
-        questionText.textContent = `${index + 1}. ${q.question}`;
-        questionDiv.appendChild(questionText);
-
-        const optionsDiv = document.createElement("div");
-        optionsDiv.classList.add("options");
-
-        q.options.forEach((option, i) => {
-            const button = document.createElement("button");
-            button.textContent = option;
-            button.onclick = () => checkAnswer(button, i, q.correct);
-            optionsDiv.appendChild(button);
-        });
-
-        questionDiv.appendChild(optionsDiv);
-        container.appendChild(questionDiv);
-    });
-}
-
-// Function to check answer and apply styling
-function checkAnswer(button, selected, correct) {
-    const parent = button.parentElement;
-    const buttons = parent.querySelectorAll("button");
-
-    buttons.forEach(btn => {
-        btn.disabled = true;
-        if (btn === button) {
-            btn.classList.add(selected === correct ? "correct" : "wrong");
-        }
-        if (buttons[correct] !== button) {
-            buttons[correct].classList.add("correct");
-        }
-    });
-}
-
-// Load questions on page load
-window.onload = loadQuestions;
-// Array of MCQs with correct answers
-const questions = [
-    // Previous 20 questions...
     
     // Next 10 questions (21-30)
     { question: "The waslis used for Rajasthani paintings were made by:", options: ["Pressing silk cloth with wooden boards", "Layering handmade paper sheets together", "Boiling plant extracts to create a canvas", "Importing parchment from Persia"], correct: 1 },
     { question: "What was the primary purpose of burnishing Rajasthani miniature paintings with an agate stone?", options: ["To add waterproofing properties", "To make colors appear deeper and richer", "To ensure faster drying of pigments", "To give the surface a rough texture"], correct: 1 },
     { question: "Why were camel and squirrel hair preferred for making brushes in Rajasthani paintings?", options: ["They absorbed more pigment than other animal hairs", "They allowed fine and controlled strokes", "They retained their shape for a longer time", "They could be easily obtained in desert regions"], correct: 1 },
     { question: "The composition of Rajasthani miniature paintings often featured:", options: ["Symmetrical, highly realistic cityscapes", "Flattened perspective with bold color contrasts", "Three-dimensional shading with chiaroscuro", "Minimal background details to focus on figures"], correct: 1 },
-    { question: "Which of these was a common color preference in Rajasthani paintings?", options: ["Muted pastels and earthy tones", "Vivid and contrasting primary colors", "Heavy use of metallic silver and grey shades", "Naturalistic color blending for realism"], correct: 1 },
+    { question: "Which of these ws a common color preference in Rajasthani paintings?", options: ["Muted pastels and earthy tones", "Vivid and contrasting primary colors", "Heavy use of metallic silver and grey shades", "Naturalistic color blending for realism"], correct: 1 },
     { question: "How were natural pigments for Rajasthani paintings traditionally sourced?", options: ["By grinding minerals and semi-precious stones", "By extracting dyes from factory-made chemicals", "By boiling wood pulp and tree bark", "By using only animal-derived substances"], correct: 0 },
     { question: "The fine detailing in Rajasthani paintings was primarily done using:", options: ["A thick layer of underpainting", "Repetitive brushstrokes with gold highlights", "A single-hair brush and magnification techniques", "Printing methods introduced by the British"], correct: 2 },
     { question: "Which of the following statements about the Rajasthani painting process is TRUE?", options: ["Artists used pre-mixed colors stored for later use", "Outlines were drawn in charcoal before applying color", "Different specialists handled different aspects of a painting", "Backgrounds were always painted first before figures"], correct: 2 },
@@ -87,53 +41,7 @@ const questions = [
     { question: "The use of gold and silver in Rajasthani paintings served to:", options: ["Highlight divine figures and luxurious elements", "Make paintings resistant to humidity", "Create three-dimensional sculptural effects", "Preserve paintings for longer durations"], correct: 0 },
 ];
 
-// Function to render all questions dynamically
-function loadQuestions() {
-    const container = document.getElementById("questions-container");
-    questions.forEach((q, index) => {
-        const questionDiv = document.createElement("div");
-        questionDiv.classList.add("question");
 
-        const questionText = document.createElement("h4");
-        questionText.textContent = `${index + 1}. ${q.question}`;
-        questionDiv.appendChild(questionText);
-
-        const optionsDiv = document.createElement("div");
-        optionsDiv.classList.add("options");
-
-        q.options.forEach((option, i) => {
-            const button = document.createElement("button");
-            button.textContent = option;
-            button.onclick = () => checkAnswer(button, i, q.correct);
-            optionsDiv.appendChild(button);
-        });
-
-        questionDiv.appendChild(optionsDiv);
-        container.appendChild(questionDiv);
-    });
-}
-
-// Function to check answer and apply styling
-function checkAnswer(button, selected, correct) {
-    const parent = button.parentElement;
-    const buttons = parent.querySelectorAll("button");
-
-    buttons.forEach(btn => {
-        btn.disabled = true;
-        if (btn === button) {
-            btn.classList.add(selected === correct ? "correct" : "wrong");
-        }
-        if (buttons[correct] !== button) {
-            buttons[correct].classList.add("correct");
-        }
-    });
-}
-
-// Load questions on page load
-window.onload = loadQuestions;
-// Array of MCQs with correct answers
-const questions = [
-    // Previous 30 questions...
     
     // Next 10 questions (31-40)
     { question: "The outlining of figures in Rajasthani paintings was typically done using:", options: ["Dark brown or black ink", "White chalk for preliminary sketches", "Thin gold-leaf strips", "Indigo-dyed cotton threads"], correct: 0 },
@@ -148,53 +56,7 @@ const questions = [
     { question: "The emphasis on decorative elements such as floral patterns and ornate borders in Rajasthani paintings was meant to:", options: ["Showcase the artist's skills in intricate detailing", "Create optical illusions of depth", "Ensure paintings fit within architectural designs", "Serve as hidden codes for storytelling"], correct: 0 },
 ];
 
-// Function to render all questions dynamically
-function loadQuestions() {
-    const container = document.getElementById("questions-container");
-    questions.forEach((q, index) => {
-        const questionDiv = document.createElement("div");
-        questionDiv.classList.add("question");
 
-        const questionText = document.createElement("h4");
-        questionText.textContent = `${index + 1}. ${q.question}`;
-        questionDiv.appendChild(questionText);
-
-        const optionsDiv = document.createElement("div");
-        optionsDiv.classList.add("options");
-
-        q.options.forEach((option, i) => {
-            const button = document.createElement("button");
-            button.textContent = option;
-            button.onclick = () => checkAnswer(button, i, q.correct);
-            optionsDiv.appendChild(button);
-        });
-
-        questionDiv.appendChild(optionsDiv);
-        container.appendChild(questionDiv);
-    });
-}
-
-// Function to check answer and apply styling
-function checkAnswer(button, selected, correct) {
-    const parent = button.parentElement;
-    const buttons = parent.querySelectorAll("button");
-
-    buttons.forEach(btn => {
-        btn.disabled = true;
-        if (btn === button) {
-            btn.classList.add(selected === correct ? "correct" : "wrong");
-        }
-        if (buttons[correct] !== button) {
-            buttons[correct].classList.add("correct");
-        }
-    });
-}
-
-// Load questions on page load
-window.onload = loadQuestions;
-// Array of MCQs with correct answers
-const questions = [
-    // Previous 40 questions...
     
     // Next 10 questions (41-50)
     { question: "The Mewar School of Painting is believed to have originated in which location?", options: ["Chawand", "Jaipur", "Kishangarh", "Bundi"], correct: 0 },
@@ -209,53 +71,7 @@ const questions = [
     { question: "The Baramasa series from Bundi illustrates:", options: ["Twelve moods of lovers in different seasons", "The twelve divine forms of Lord Vishnu", "The daily routine of Rajput kings", "Scenes from Jain cosmology"], correct: 0 },
 ];
 
-// Function to render all questions dynamically
-function loadQuestions() {
-    const container = document.getElementById("questions-container");
-    questions.forEach((q, index) => {
-        const questionDiv = document.createElement("div");
-        questionDiv.classList.add("question");
 
-        const questionText = document.createElement("h4");
-        questionText.textContent = `${index + 1}. ${q.question}`;
-        questionDiv.appendChild(questionText);
-
-        const optionsDiv = document.createElement("div");
-        optionsDiv.classList.add("options");
-
-        q.options.forEach((option, i) => {
-            const button = document.createElement("button");
-            button.textContent = option;
-            button.onclick = () => checkAnswer(button, i, q.correct);
-            optionsDiv.appendChild(button);
-        });
-
-        questionDiv.appendChild(optionsDiv);
-        container.appendChild(questionDiv);
-    });
-}
-
-// Function to check answer and apply styling
-function checkAnswer(button, selected, correct) {
-    const parent = button.parentElement;
-    const buttons = parent.querySelectorAll("button");
-
-    buttons.forEach(btn => {
-        btn.disabled = true;
-        if (btn === button) {
-            btn.classList.add(selected === correct ? "correct" : "wrong");
-        }
-        if (buttons[correct] !== button) {
-            buttons[correct].classList.add("correct");
-        }
-    });
-}
-
-// Load questions on page load
-window.onload = loadQuestions;
-// Array of MCQs with correct answers
-const questions = [
-    // Previous 50 questions...
     
     // Next 10 questions (51-60)
     { question: "Which external influence was LEAST significant in shaping the Rajasthani schools of painting?", options: ["Mughal art", "Persian miniature tradition", "European Renaissance art", "Chinese ink painting"], correct: 3 },
@@ -270,53 +86,7 @@ const questions = [
     { question: "Which of the following is NOT a reason why Rajasthani painting continued to thrive despite Mughal dominance?", options: ["Strong patronage by Rajput rulers", "Isolation from Mughal administrative centers", "Resistance to Persian artistic techniques", "Religious and cultural themes appealing to local audiences"], correct: 2 },
 ];
 
-// Function to render all questions dynamically
-function loadQuestions() {
-    const container = document.getElementById("questions-container");
-    questions.forEach((q, index) => {
-        const questionDiv = document.createElement("div");
-        questionDiv.classList.add("question");
 
-        const questionText = document.createElement("h4");
-        questionText.textContent = `${index + 1}. ${q.question}`;
-        questionDiv.appendChild(questionText);
-
-        const optionsDiv = document.createElement("div");
-        optionsDiv.classList.add("options");
-
-        q.options.forEach((option, i) => {
-            const button = document.createElement("button");
-            button.textContent = option;
-            button.onclick = () => checkAnswer(button, i, q.correct);
-            optionsDiv.appendChild(button);
-        });
-
-        questionDiv.appendChild(optionsDiv);
-        container.appendChild(questionDiv);
-    });
-}
-
-// Function to check answer and apply styling
-function checkAnswer(button, selected, correct) {
-    const parent = button.parentElement;
-    const buttons = parent.querySelectorAll("button");
-
-    buttons.forEach(btn => {
-        btn.disabled = true;
-        if (btn === button) {
-            btn.classList.add(selected === correct ? "correct" : "wrong");
-        }
-        if (buttons[correct] !== button) {
-            buttons[correct].classList.add("correct");
-        }
-    });
-}
-
-// Load questions on page load
-window.onload = loadQuestions;
-// Array of MCQs with correct answers
-const questions = [
-    // Previous 60 questions...
     
     // Next 10 questions (61-70)
     { question: "Which Rajasthani school was the last to develop?", options: ["Jaipur", "Bundi", "Nathdwara", "Bikaner"], correct: 2 },
@@ -330,54 +100,6 @@ const questions = [
     { question: "Who commissioned most of the religious-themed paintings in Rajasthan?", options: ["Vaishnavite kings and merchants", "British administrators", "Jain monks", "Mughal emperors"], correct: 0 },
     { question: "Which of these themes was almost NEVER depicted in Rajasthani painting?", options: ["Scientific diagrams", "Courtly celebrations", "Epic battles", "Krishna’s life events"], correct: 0 },
 ];
-
-// Function to render all questions dynamically
-function loadQuestions() {
-    const container = document.getElementById("questions-container");
-    questions.forEach((q, index) => {
-        const questionDiv = document.createElement("div");
-        questionDiv.classList.add("question");
-
-        const questionText = document.createElement("h4");
-        questionText.textContent = `${index + 1}. ${q.question}`;
-        questionDiv.appendChild(questionText);
-
-        const optionsDiv = document.createElement("div");
-        optionsDiv.classList.add("options");
-
-        q.options.forEach((option, i) => {
-            const button = document.createElement("button");
-            button.textContent = option;
-            button.onclick = () => checkAnswer(button, i, q.correct);
-            optionsDiv.appendChild(button);
-        });
-
-        questionDiv.appendChild(optionsDiv);
-        container.appendChild(questionDiv);
-    });
-}
-
-// Function to check answer and apply styling
-function checkAnswer(button, selected, correct) {
-    const parent = button.parentElement;
-    const buttons = parent.querySelectorAll("button");
-
-    buttons.forEach(btn => {
-        btn.disabled = true;
-        if (btn === button) {
-            btn.classList.add(selected === correct ? "correct" : "wrong");
-        }
-        if (buttons[correct] !== button) {
-            buttons[correct].classList.add("correct");
-        }
-    });
-}
-
-// Load questions on page load
-window.onload = loadQuestions;
-// Array of MCQs with correct answers
-const questions = [
-    // Previous 70 questions...
     
     // Next 10 questions (71-80)
     { question: "The use of exaggerated gestures in Rajasthani paintings was primarily to:", options: ["Emphasize emotions over realism", "Create a sense of movement", "Avoid religious iconography", "Mimic Persian artistic conventions"], correct: 0 },
@@ -392,53 +114,8 @@ const questions = [
     { question: "The depiction of Krishna as Shrinathji is most commonly found in:", options: ["Nathdwara School", "Bundi School", "Jodhpur School", "Malwa School"], correct: 0 },
 ];
 
-// Function to render all questions dynamically
-function loadQuestions() {
-    const container = document.getElementById("questions-container");
-    questions.forEach((q, index) => {
-        const questionDiv = document.createElement("div");
-        questionDiv.classList.add("question");
 
-        const questionText = document.createElement("h4");
-        questionText.textContent = `${index + 1}. ${q.question}`;
-        questionDiv.appendChild(questionText);
 
-        const optionsDiv = document.createElement("div");
-        optionsDiv.classList.add("options");
-
-        q.options.forEach((option, i) => {
-            const button = document.createElement("button");
-            button.textContent = option;
-            button.onclick = () => checkAnswer(button, i, q.correct);
-            optionsDiv.appendChild(button);
-        });
-
-        questionDiv.appendChild(optionsDiv);
-        container.appendChild(questionDiv);
-    });
-}
-
-// Function to check answer and apply styling
-function checkAnswer(button, selected, correct) {
-    const parent = button.parentElement;
-    const buttons = parent.querySelectorAll("button");
-
-    buttons.forEach(btn => {
-        btn.disabled = true;
-        if (btn === button) {
-            btn.classList.add(selected === correct ? "correct" : "wrong");
-        }
-        if (buttons[correct] !== button) {
-            buttons[correct].classList.add("correct");
-        }
-    });
-}
-
-// Load questions on page load
-window.onload = loadQuestions;
-// Array of MCQs with correct answers
-const questions = [
-    // Previous 80 questions...
     
     // Next 10 questions (81-90)
     { question: "The paintings of Jaipur School were influenced by:", options: ["Mughal and Vaishnavite traditions", "Jain and Buddhist art", "Persian and Ottoman miniatures", "Pahari and Nepali painting styles"], correct: 0 },
@@ -453,53 +130,7 @@ const questions = [
     { question: "Why do Rajasthani paintings often show multiple events in one frame?", options: ["To create a continuous narrative", "Due to influence from Persian calligraphy", "To reduce the cost of paper", "Because single-scene paintings were banned"], correct: 0 },
 ];
 
-// Function to render all questions dynamically
-function loadQuestions() {
-    const container = document.getElementById("questions-container");
-    questions.forEach((q, index) => {
-        const questionDiv = document.createElement("div");
-        questionDiv.classList.add("question");
 
-        const questionText = document.createElement("h4");
-        questionText.textContent = `${index + 1}. ${q.question}`;
-        questionDiv.appendChild(questionText);
-
-        const optionsDiv = document.createElement("div");
-        optionsDiv.classList.add("options");
-
-        q.options.forEach((option, i) => {
-            const button = document.createElement("button");
-            button.textContent = option;
-            button.onclick = () => checkAnswer(button, i, q.correct);
-            optionsDiv.appendChild(button);
-        });
-
-        questionDiv.appendChild(optionsDiv);
-        container.appendChild(questionDiv);
-    });
-}
-
-// Function to check answer and apply styling
-function checkAnswer(button, selected, correct) {
-    const parent = button.parentElement;
-    const buttons = parent.querySelectorAll("button");
-
-    buttons.forEach(btn => {
-        btn.disabled = true;
-        if (btn === button) {
-            btn.classList.add(selected === correct ? "correct" : "wrong");
-        }
-        if (buttons[correct] !== button) {
-            buttons[correct].classList.add("correct");
-        }
-    });
-}
-
-// Load questions on page load
-window.onload = loadQuestions;
-// Array of MCQs with correct answers
-const questions = [
-    // Previous 90 questions...
     
     // Final 10 questions (91-100)
     { question: "Which Rajasthani school was most closely associated with Ragamala paintings?", options: ["Bundi", "Jaipur", "Nathdwara", "Bikaner"], correct: 0 },
