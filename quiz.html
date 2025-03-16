@@ -87,21 +87,22 @@
         }
 
         function checkAnswer(element, isCorrect) {
-            // Reset all options
-            document.querySelectorAll(".option").forEach(opt => {
-                opt.classList.remove("correct", "incorrect");
-                opt.onclick = null; // Disable further clicks
-            });
+    // Disable all options after selecting one
+    document.querySelectorAll(".option").forEach(opt => {
+        opt.onclick = null; // Prevent further clicks
+    });
 
-            // Apply correct or incorrect style
-            if (isCorrect) {
-                element.classList.add("correct");
-            } else {
-                element.classList.add("incorrect");
-            }
+    if (isCorrect) {
+        element.classList.add("correct"); // Highlight correct answer
+    } else {
+        element.classList.add("incorrect"); // Highlight wrong choice
 
-            document.querySelector(".next-btn").style.display = "block"; // Show "Next" button
-        }
+        // Find and highlight the correct answer
+        document.querySelectorAll(".option")[questions[currentQuestionIndex].correctIndex].classList.add("correct");
+    }
+
+    document.querySelector(".next-btn").style.display = "block"; // Show "Next" button
+}
 
         function nextQuestion() {
             currentQuestionIndex++;
