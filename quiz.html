@@ -67,8 +67,25 @@
     <script src="quizzr.js"></script>
     <script>
 let currentQuestionIndex = 0;
+let answered = false; // Track if the user has answered
+
+// Sample questions array (replace with your actual questions)
+const questions = [
+    {
+        question: "What is 2 + 2?",
+        options: ["3", "4", "5", "6"],
+        correctIndex: 1,
+    },
+    {
+        question: "What is the capital of France?",
+        options: ["Berlin", "Madrid", "Paris", "Rome"],
+        correctIndex: 2,
+    },
+    // Add more questions here
+];
 
 function loadQuestion() {
+    answered = false; // Reset answer tracking
     const questionData = questions[currentQuestionIndex];
     document.getElementById("question-text").textContent = questionData.question;
 
@@ -83,23 +100,25 @@ function loadQuestion() {
         optionsContainer.appendChild(optionElement);
     });
 
-    document.querySelector(".next-btn").style.display = "none"; // Hide "Next" button initially
+    document.querySelector(".next-btn").style.display = "none"; // Hide Next button initially
 }
 
 function checkAnswer(selectedElement, selectedIndex, correctIndex) {
-    // Reset previous styles before applying new ones
-    document.querySelectorAll(".option").forEach((option) => {
-        option.classList.remove("correct", "incorrect");
+    if (answered) return; // Prevent multiple selections
+
+    answered = true; // Mark as answered
+
+    document.querySelectorAll(".option").forEach((option, index) => {
+        if (index === correctIndex) {
+            option.classList.add("correct"); // Highlight correct answer in green
+        }
+        if (index === selectedIndex && selectedIndex !== correctIndex) {
+            option.classList.add("incorrect"); // Highlight wrong choice in red
+        }
+        option.onclick = null; // Disable further clicks on options
     });
 
-    if (selectedIndex === correctIndex) {
-        selectedElement.classList.add("correct"); // Correct answer turns green
-    } else {
-        selectedElement.classList.add("incorrect"); // Wrong answer turns red
-        document.querySelectorAll(".option")[correctIndex].classList.add("correct"); // Highlight correct answer
-    }
-
-    document.querySelector(".next-btn").style.display = "block"; // Show "Next" button
+    document.querySelector(".next-btn").style.display = "block"; // Show Next button
 }
 
 function nextQuestion() {
@@ -111,7 +130,7 @@ function nextQuestion() {
     }
 }
 
-// Load the first question when the page loads
+// Load first question
 window.onload = loadQuestion;        
     </script>
 
