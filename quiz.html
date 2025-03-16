@@ -3,29 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCQ Quiz</title>
+    <title>Quiz - Kiyansh Nachiketa Art Studio 🎨</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
         }
-        .question-container {
-            margin: 20px;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            max-width: 500px;
+        .quiz-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .option {
-            display: flex;
-            align-items: center;
+            display: block;
+            width: 100%;
             padding: 10px;
             margin: 5px 0;
             border: 1px solid #ddd;
             border-radius: 5px;
             cursor: pointer;
+            background: white;
         }
         .option:hover {
-            background-color: #f0f0f0;
+            background: #f0f0f0;
         }
         .correct {
             background-color: #d4edda;
@@ -35,49 +40,81 @@
             background-color: #f8d7da;
             border-color: #dc3545;
         }
-        .icon {
-            margin-left: auto;
-            font-size: 20px;
+        .next-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            display: none;
+        }
+        .next-btn:hover {
+            background: #0056b3;
         }
     </style>
 </head>
 <body>
 
-<div class="question-container">
-    <h3>Which of the following is a characteristic feature of the Rajasthani School of Miniature Painting?</h3>
-    <div class="option" onclick="checkAnswer(this, true)"> 
-        A. Use of bold and vibrant colors <span class="icon"></span>
+    <div class="quiz-container">
+        <h3 id="question-text">Loading question...</h3>
+        <div id="options-container"></div>
+        <button class="next-btn" onclick="nextQuestion()">Next</button>
     </div>
-    <div class="option" onclick="checkAnswer(this, false)"> 
-        B. Exclusive use of monochrome shades <span class="icon"></span>
-    </div>
-    <div class="option" onclick="checkAnswer(this, false)"> 
-        C. Lack of human figures <span class="icon"></span>
-    </div>
-    <div class="option" onclick="checkAnswer(this, false)"> 
-        D. No influence from Mughal art <span class="icon"></span>
-    </div>
-</div>
 
-<script>
-    function checkAnswer(element, isCorrect) {
-        // Reset all options
-        let options = document.querySelectorAll(".option");
-        options.forEach(opt => {
-            opt.classList.remove("correct", "incorrect");
-            opt.querySelector(".icon").innerHTML = "";
-        });
+    <script src="quizzr.js"></script>
+    <script>
+        let currentQuestionIndex = 0;
 
-        // Apply styles and icon
-        if (isCorrect) {
-            element.classList.add("correct");
-            element.querySelector(".icon").innerHTML = "✔";
-        } else {
-            element.classList.add("incorrect");
-            element.querySelector(".icon").innerHTML = "✖";
+        function loadQuestion() {
+            const questionData = questions[currentQuestionIndex];
+            document.getElementById("question-text").textContent = questionData.question;
+
+            const optionsContainer = document.getElementById("options-container");
+            optionsContainer.innerHTML = ""; // Clear previous options
+
+            questionData.options.forEach((option, index) => {
+                const optionElement = document.createElement("div");
+                optionElement.classList.add("option");
+                optionElement.textContent = option;
+                optionElement.onclick = () => checkAnswer(optionElement, index === questionData.correctIndex);
+                optionsContainer.appendChild(optionElement);
+            });
+
+            document.querySelector(".next-btn").style.display = "none"; // Hide "Next" button initially
         }
-    }
-</script>
-<script src="quizzr.js"></script>
+
+        function checkAnswer(element, isCorrect) {
+            // Reset all options
+            document.querySelectorAll(".option").forEach(opt => {
+                opt.classList.remove("correct", "incorrect");
+                opt.onclick = null; // Disable further clicks
+            });
+
+            // Apply correct or incorrect style
+            if (isCorrect) {
+                element.classList.add("correct");
+            } else {
+                element.classList.add("incorrect");
+            }
+
+            document.querySelector(".next-btn").style.display = "block"; // Show "Next" button
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                document.querySelector(".quiz-container").innerHTML = "<h3>🎉 Quiz Completed! 🎉</h3>";
+            }
+        }
+
+        // Load the first question when the page loads
+        window.onload = loadQuestion;
+    </script>
+
 </body>
 </html>
